@@ -1,21 +1,29 @@
 import React from 'react'
 
-const UsersPage = (props) => (
+const UsersPage = (props) => {
 
-    <ul className="collection container">
+    function ListItem (obj) {
+        const item =
+        <li className="collection-item avatar">
+            <img src={obj.props.picture} alt="" className="circle"></img>
+            <span className="title"><b>{obj.props.name} {obj.props.surname}</b></span>
+            <p><i className="fas fa-envelope">&nbsp; </i>{obj.props.email}</p>
+            <p><i className="fas fa-birthday-cake">&nbsp; </i>{obj.props.dob}</p>
+        </li>
+    
+        return item
+    }
 
-        {props.users.map(user => (
-            <li key={user.cell} className="collection-item avatar">
-                <img src={user.picture} alt="" className="circle"></img>
-                <span className="title"><b>{user.name} {user.surname}</b></span>
-                <p><i className="fas fa-envelope">&nbsp; </i>{user.email}</p>
-                <p><i className="fas fa-birthday-cake">&nbsp; </i>{user.dob}</p>
-            </li>
+    const users = props.users;
+    const listItems = users.map(user => <ListItem key={user.id} props={user} />)
 
-        ))}
+    return (
+        <ul className="collection container">
+            {listItems}
+        </ul>
+    )
 
-    </ul>
-)
+}
 
 
 export default UsersPage

@@ -24,8 +24,6 @@ const fetchPeople = () => (
                 )
             ))
 
-            console.log(users);
-
             return users
         })
 )

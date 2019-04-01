@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import UsersPage from './../components/UsersPage'
+import UsersPageGrid from './../components/UsersPageGrid'
 import fetchPeople from './../services/FetchPeople'
 
 import './App.css';
@@ -12,24 +13,32 @@ class App extends Component {
 
     this.state = {
       people: [],
+      layoutSwitch: true,
     }
   }
 
+  onClick = () => {
+    this.setState({ layoutSwitch: !this.state.layoutSwitch })
+  }
+  
   componentDidMount() {
     fetchPeople()
-      .then((users) => {
-        this.setState({ people: users })
-      })
+    .then((users) => {
+      this.setState({ people: users })
+    })
   }
 
 
   render() {
-    const { people } = this.state;
+    const { people, layoutSwitch } = this.state;
 
     return (
       <>
-        <Header />
-        <UsersPage users={people} />
+        <Header onClick={this.onClick} className={layoutSwitch ? "fas fa-th" : "fas fa-list"} />
+        {layoutSwitch ?
+          <UsersPage users={people}/> :
+          <UsersPageGrid users={people} />
+        }
         <Footer />
       </>
     );

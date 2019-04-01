@@ -5,7 +5,7 @@ class UserObj {
         this.surname = surname.charAt(0).toUpperCase() + surname.slice(1)
         this.picture = picture
         this.pictureLarge = pictureLarge
-        this.email = email
+        this.email = email.slice(0, 3) + '...' + email.slice(email.indexOf('@') - 3, email.length)
         this.dob = dob.date.slice(0, 10)
         this.gender = gender
     }
