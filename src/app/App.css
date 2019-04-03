@@ -1,19 +1,33 @@
-.page-footer {
-    margin-top: 3%;
-    padding: 0;
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.collection {
-    margin-top: 3%;
+main {
+  flex: 1 0 auto;
+}
+
+.page-footer {
+  margin-top: 3%;
+  padding: 0;
+}
+
+.collection, #searchBar {
+  margin-top: 20px;
 }
 
 .card-title b {
-    text-shadow: 2px 2px 3px black;
+  text-shadow: 2px 2px 3px black;
 }
 
 .fa-info {
   padding-right: 10px;
   padding-left: 10px;
+}
+
+img {
+  display: block;
 }
 
 .sk-cube-grid {
@@ -25,7 +39,7 @@
   .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: #ee6e73;
+    background-color: #ff8f00;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
             animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
@@ -76,8 +90,4 @@
       -webkit-transform: scale3D(0, 0, 1);
               transform: scale3D(0, 0, 1);
     } 
-  }
-
-  #searchBar {
-      margin-top: 15px;
   }
