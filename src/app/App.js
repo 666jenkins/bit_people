@@ -14,7 +14,7 @@ class App extends Component {
 
     this.state = {
       people: [],
-      searchPeople: [],
+      search: [],
       layoutSwitch: true,
     }
   }
@@ -38,7 +38,7 @@ class App extends Component {
           people: users,
           layoutSwitch: JSON.parse(localStorage.getItem('layoutState')),
         })
-        console.log(users);
+        // console.log(users);
       })
   }
 
@@ -46,18 +46,16 @@ class App extends Component {
     const { people } = this.state;
 
     let searchQuery = event.target.value.toLowerCase()
-    const result = people.filter(user => user.name.toLowerCase().includes(searchQuery))
+    console.log(searchQuery)
+    let result = people.filter(user => user.name.toLowerCase().includes(searchQuery))
+    console.log(result)
     this.setState({
-      people: result
+      search: result
     })
-
-    // displayedUsers = people.filter((el) => {
-    //   let searchValue = el.name.toLowerCase();
-    //   return searchValue.indexOf(searchQuery) !== -1;
   }
 
   render() {
-    const { people, layoutSwitch } = this.state;
+    const { people, search, layoutSwitch } = this.state;
 
     return (
       <>
@@ -66,8 +64,8 @@ class App extends Component {
         {!people.length ? <Loading /> :
 
           layoutSwitch ?
-            <UsersPage users={people} /> :
-            <UsersPageGrid users={people} />
+            <UsersPage users={search.length ? search : people} /> :
+            <UsersPageGrid users={search.length ? search : people} />
         }
         <Footer />
       </>
